@@ -48,7 +48,7 @@ public class LoginTests {
         loginPage.pressLoginButton();
 
              Assert.assertTrue("Incorrect login to the system with fake log/pass",
-                     loginPage.checkErrorShown("ErrorMess"));
+                     loginPage.isErrorShown("ErrorMess"));
 
     }
 
@@ -67,30 +67,30 @@ public class LoginTests {
         loginPage.pressLoginButton();
 
         Assert.assertTrue("Incorrect login to the system with fake log/pass",
-                loginPage.checkErrorShown("ErrorMess"));
+                loginPage.isErrorShown("ErrorMess"));
 
     }
-   // @Test
-    public  void emailIncorrect() throws Exception{
-        mainPage = new MainPage(driver);
-        loginPage = new LoginPage(driver);
+    //@Test
+    public  void test5_emailIncorrect() throws Exception{
+        //mainPage = new MainPage(driver);
+        //loginPage = new LoginPage(driver);
 
-        mainPage.clickLogo();
-        mainPage.switchToLoginPage();
-
+        //mainPage.clickLogo();
+        //mainPage.switchToLoginPage();
         loginPage.fillEmailField("testsolnalarmyandex.ru");
-        loginPage.fillPasswordfield("1ElloS");
+        loginPage.fillPasswordfield("1El");
 
         loginPage.pressLoginButton();
 
         Assert.assertTrue("Incorrect login to the system with fake log/pass",
-                loginPage.checkErrorShown("ErrorMess"));
+                loginPage.isErrorShown("ErrorMess"));
 
     }
-    //@Test
-    public  void passwordlIncorrect() throws Exception{
+    @Test
+    public  void test6_passwordlIncorrect() throws Exception{
         mainPage = new MainPage(driver);
-        loginPage = new LoginPage(driver);
+       loginPage = new LoginPage(driver);
+
 
         mainPage.clickLogo();
         mainPage.switchToLoginPage();
@@ -101,17 +101,17 @@ public class LoginTests {
         loginPage.pressLoginButton();
 
         Assert.assertTrue("Incorrect login to the system with fake log/pass",
-                loginPage.checkErrorShown("ErrorMess"));
+                loginPage.isErrorShown("ErrorMess"));
 
     }
 
-    //@Test
-    public  void lengthField() throws Exception{
-        mainPage = new MainPage(driver);
-        loginPage = new LoginPage(driver);
+    @Test
+    public  void test3_lengthFieldPassword() throws Exception{
+        //mainPage = new MainPage(driver);
+        //loginPage = new LoginPage(driver);
 
-        mainPage.clickLogo();
-        mainPage.switchToLoginPage();
+        //mainPage.clickLogo();
+       // mainPage.switchToLoginPage();
 
         loginPage.fillEmailField("solnalarm@ukr.net");
         loginPage.fillPasswordfield("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -119,51 +119,52 @@ public class LoginTests {
         loginPage.pressLoginButton();
 
         Assert.assertTrue("Incorrect login to the system with fake log/pass",
-                loginPage.checkErrorShown("ErrorMess"));
+                loginPage.isErrorShown("ErrorMess"));
 
-    }
-
-   // @Test
-
-    public void blankEmailField() throws Exception{
-        mainPage = new MainPage(driver);
-        loginPage = new LoginPage(driver);
-
-        mainPage.clickLogo();
-        mainPage.switchToLoginPage();
-
-        loginPage.fillEmailField("");
-        loginPage.fillPasswordfield("1ElloS");
-        loginPage.pressLoginButton();
-        Assert.assertTrue("Error mass NOT shown in case blank Email Field",loginPage.checkErrorShown("ErrorMessLogin"));
-    }
-     @Test
-
-    public void blankLoginPasswordFields() throws Exception{
-        mainPage = new MainPage(driver);
-        loginPage = new LoginPage(driver);
-
-        mainPage.clickLogo();
-        mainPage.switchToLoginPage();
-
-        loginPage.fillEmailField("");
-        loginPage.fillPasswordfield("");
-        loginPage.pressLoginButton();
-        Assert.assertTrue("Error mass NOT shown in case blank Pass and Log Fields",
-                loginPage.checkErrorShown("EmptyLoginFields"));
     }
 
     @Test
 
-    public void blankPasswordField() throws Exception{
-        mainPage = new MainPage(driver);
-        loginPage = new LoginPage(driver);
+    public void test4_blankEmailField() throws Exception{
+        //mainPage = new MainPage(driver);
+        //loginPage = new LoginPage(driver);
+
+        //mainPage.clickLogo();
+        //mainPage.switchToLoginPage();
+
+        loginPage.fillEmailField("");
+        loginPage.fillPasswordfield("1ElloS");
+        loginPage.pressLoginButton();
+        Assert.assertTrue("Error mass NOT shown in case blank Email Field",
+                loginPage.isErrorShown("ErrorMessLogin"));
+    }
+     @Test
+
+    public void test1_blankLoginPasswordFields() throws Exception{
+        //mainPage = new MainPage(driver);
+        //loginPage = new LoginPage(driver);
+
+        mainPage.clickLogo();
+        mainPage.switchToLoginPage();
 
         loginPage.fillEmailField("");
         loginPage.fillPasswordfield("");
         loginPage.pressLoginButton();
         Assert.assertTrue("Error mass NOT shown in case blank Pass and Log Fields",
-                loginPage.checkErrorShown("EmptyLoginFields"));
+                loginPage.isErrorShown("EmptyLoginFields"));
+    }
+
+    @Test
+
+    public void test2_blankPasswordField() throws Exception{
+        //mainPage = new MainPage(driver);
+        //loginPage = new LoginPage(driver);
+
+        loginPage.fillEmailField("testsolnalarm@yandex.ru");
+        loginPage.fillPasswordfield("");
+        loginPage.pressLoginButton();
+        Assert.assertTrue("Error mass NOT shown in case blank Pass and Log Fields",
+                loginPage.isErrorShown("EmptyLoginFields"));
     }
 
 
